@@ -92,7 +92,6 @@ namespace PDFAttacher
 
         private void procQpdf_Exited(object sender, EventArgs e)
         {
-            MessageBox.Show("Exited with code " + procQpdf.ExitCode);
             if (procQpdf.ExitCode != 2)
             {
                 try

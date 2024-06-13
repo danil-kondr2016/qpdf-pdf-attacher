@@ -18,7 +18,18 @@ namespace PDFAttacher
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void btnSelectPdf_Click(object sender, EventArgs e)
+        {
+            dlgSelectPdf.ShowDialog();
+        }
+
+        private void dlgSelectPdf_FileOk(object sender, CancelEventArgs e)
+        {
+            string fileName = dlgSelectPdf.FileName;
+            tbFileName.Text = fileName;
         }
     }
 }

@@ -72,9 +72,8 @@ namespace PDFAttacher
             sb.Append("\"").Append(pdfSource).Append("\" ");
             foreach (string item in lbFileList.Items.Cast<string>())
             {
-                sb.AppendFormat("--add-attachment \"{0}\" ", item);
+                sb.AppendFormat("--add-attachment \"{0}\" --", item);
             }
-            sb.Append("-- ");
             sb.Append("\"").Append(pdfTarget).Append("\"");
 
             procQpdf.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\qpdf\\qpdf.exe";

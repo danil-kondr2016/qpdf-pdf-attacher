@@ -33,10 +33,12 @@
             this.btnSelectPdf = new System.Windows.Forms.Button();
             this.tbFileName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbFileList = new System.Windows.Forms.ListBox();
-            this.btnAddFile = new System.Windows.Forms.Button();
             this.btnRemoveFile = new System.Windows.Forms.Button();
+            this.btnAddFile = new System.Windows.Forms.Button();
+            this.lbFileList = new System.Windows.Forms.ListBox();
             this.dlgSelectFile = new System.Windows.Forms.OpenFileDialog();
+            this.btnAttach = new System.Windows.Forms.Button();
+            this.procQpdf = new System.Diagnostics.Process();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -90,15 +92,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Список прикрепляемых файлов";
             // 
-            // lbFileList
+            // btnRemoveFile
             // 
-            this.lbFileList.FormattingEnabled = true;
-            this.lbFileList.ItemHeight = 16;
-            this.lbFileList.Location = new System.Drawing.Point(7, 22);
-            this.lbFileList.Name = "lbFileList";
-            this.lbFileList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lbFileList.Size = new System.Drawing.Size(562, 148);
-            this.lbFileList.TabIndex = 0;
+            this.btnRemoveFile.Location = new System.Drawing.Point(333, 182);
+            this.btnRemoveFile.Name = "btnRemoveFile";
+            this.btnRemoveFile.Size = new System.Drawing.Size(109, 32);
+            this.btnRemoveFile.TabIndex = 2;
+            this.btnRemoveFile.Text = "Удалить";
+            this.btnRemoveFile.UseVisualStyleBackColor = true;
+            this.btnRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
             // 
             // btnAddFile
             // 
@@ -110,26 +112,48 @@
             this.btnAddFile.UseVisualStyleBackColor = true;
             this.btnAddFile.Click += new System.EventHandler(this.btnAddFile_Click);
             // 
-            // btnRemoveFile
+            // lbFileList
             // 
-            this.btnRemoveFile.Location = new System.Drawing.Point(333, 182);
-            this.btnRemoveFile.Name = "btnRemoveFile";
-            this.btnRemoveFile.Size = new System.Drawing.Size(109, 32);
-            this.btnRemoveFile.TabIndex = 2;
-            this.btnRemoveFile.Text = "Удалить";
-            this.btnRemoveFile.UseVisualStyleBackColor = true;
-            this.btnRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
+            this.lbFileList.FormattingEnabled = true;
+            this.lbFileList.ItemHeight = 16;
+            this.lbFileList.Location = new System.Drawing.Point(7, 22);
+            this.lbFileList.Name = "lbFileList";
+            this.lbFileList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lbFileList.Size = new System.Drawing.Size(562, 148);
+            this.lbFileList.TabIndex = 0;
             // 
             // dlgSelectFile
             // 
             this.dlgSelectFile.Multiselect = true;
             this.dlgSelectFile.FileOk += new System.ComponentModel.CancelEventHandler(this.dlgSelectFile_FileOk);
             // 
+            // btnAttach
+            // 
+            this.btnAttach.Location = new System.Drawing.Point(251, 315);
+            this.btnAttach.Name = "btnAttach";
+            this.btnAttach.Size = new System.Drawing.Size(119, 40);
+            this.btnAttach.TabIndex = 2;
+            this.btnAttach.Text = "Прикрепить";
+            this.btnAttach.UseVisualStyleBackColor = true;
+            this.btnAttach.Click += new System.EventHandler(this.btnAttach_Click);
+            // 
+            // procQpdf
+            // 
+            this.procQpdf.StartInfo.Domain = "";
+            this.procQpdf.StartInfo.LoadUserProfile = false;
+            this.procQpdf.StartInfo.Password = null;
+            this.procQpdf.StartInfo.StandardErrorEncoding = null;
+            this.procQpdf.StartInfo.StandardOutputEncoding = null;
+            this.procQpdf.StartInfo.UserName = "";
+            this.procQpdf.SynchronizingObject = this;
+            this.procQpdf.Exited += new System.EventHandler(this.procQpdf_Exited);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 450);
+            this.ClientSize = new System.Drawing.Size(599, 367);
+            this.Controls.Add(this.btnAttach);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -153,6 +177,8 @@
         private System.Windows.Forms.Button btnAddFile;
         private System.Windows.Forms.ListBox lbFileList;
         private System.Windows.Forms.OpenFileDialog dlgSelectFile;
+        private System.Windows.Forms.Button btnAttach;
+        private System.Diagnostics.Process procQpdf;
     }
 }
 
